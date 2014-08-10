@@ -1,7 +1,7 @@
-#---------------- Plot 3--------------------------------------------
+#---------------- Plot 4--------------------------------------------
 #     readData()  --> Downloads zip and reads initial data frame
 #
-#     plot3()  --> to create plot from data
+#     plot4()  --> to create plot from data
 #------------------------------------------------------------------
 
 readData <- function(){
@@ -30,15 +30,24 @@ readData <- function(){
   data    
 }
 
-plot3 <- function(){
+plot4 <- function(){
   
   dat <- readData() 
-  png("plot3.png", width=480, height=480, bg="transparent")
+  png("plot4.png", width=480, height=480, bg="transparent")
+  
+  par(mfrow=c(2,2))
+  plot(dat$Time, dat$Global_active_power, xlab="", ylab="Global Active Power (kilowatts)", type='l')
+  
+  plot(dat$Time, dat$Voltage, xlab="datetime", ylab="Voltage", type='l')
+  
   plot(dat$Time, ylim=c(0,40),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
   plot(dat$Time, ylim=c(0,40), dat$Sub_metering_2, col="red", xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
   plot(dat$Time, ylim=c(0,40), dat$Sub_metering_3, col="blue", xlab="", ylab="Energy sub metering", type='l')
-  legend("topright", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  legend("topright", cex=0.9, box.col="transparent", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  
+  plot(dat$Time, dat$Global_reactive_power, xlab="", ylab="Global Active Power (kilowatts)", type='l')
+  
   dev.off()
 }
