@@ -30,15 +30,15 @@ readData <- function(){
   data    
 }
 
-plot3 <- function(){
+plot3 <- function(dat){
   
-  dat <- readData() 
+  #dat <- readData() 
   png("plot3.png", width=480, height=480, bg="transparent")
-  plot(dat$Time, ylim=c(0,40),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
-  plot(dat$Time, ylim=c(0,40), dat$Sub_metering_2, col="red", xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))), dat$Sub_metering_2, col="red", xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
-  plot(dat$Time, ylim=c(0,40), dat$Sub_metering_3, col="blue", xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))), dat$Sub_metering_3, col="blue", xlab="", ylab="Energy sub metering", type='l')
   legend("topright", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   dev.off()
 }

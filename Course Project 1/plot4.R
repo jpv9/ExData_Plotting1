@@ -40,11 +40,11 @@ plot4 <- function(){
   
   plot(dat$Time, dat$Voltage, xlab="datetime", ylab="Voltage", type='l')
   
-  plot(dat$Time, ylim=c(0,40),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
-  plot(dat$Time, ylim=c(0,40), dat$Sub_metering_2, col="red", xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))), dat$Sub_metering_2, col="red", xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
-  plot(dat$Time, ylim=c(0,40), dat$Sub_metering_3, col="blue", xlab="", ylab="Energy sub metering", type='l')
+  plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))), dat$Sub_metering_3, col="blue", xlab="", ylab="Energy sub metering", type='l')
   legend("topright", cex=0.9, box.col="transparent", lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   
   plot(dat$Time, dat$Global_reactive_power, xlab="", ylab="Global Active Power (kilowatts)", type='l')
