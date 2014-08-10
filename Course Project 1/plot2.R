@@ -1,8 +1,9 @@
 #---------------- Plot 1--------------------------------------------
 #     readData()  --> Downloads zip and reads initial data frame
 #
-#     plot1()  --> to create plot from data
+#     plot2()  --> to create plot from data
 #------------------------------------------------------------------
+
 readData <- function(){
   temp <- tempfile()
   download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",temp)
@@ -29,10 +30,10 @@ readData <- function(){
   data    
 }
 
-plot1 <- function(){
+plot2 <- function(){
   
   dat <- readData() 
-  png("plot1.png", width=480, height=480, bg="transparent")
-  hist(dat$Global_active_power, main="Global Active Power", col="red", xlab="Global Active Power (kilowatts)")
+  png("plot2.png", width=480, height=480, bg="transparent")
+  plot(dat$Time, dat$Global_active_power, xlab="", ylab="Global Active Power (kilowatts)", type='l')
   dev.off()
 }
