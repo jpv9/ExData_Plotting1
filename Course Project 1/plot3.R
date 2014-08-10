@@ -30,9 +30,9 @@ readData <- function(){
   data    
 }
 
-plot3 <- function(dat){
+plot3 <- function(){
   
-  #dat <- readData() 
+  dat <- readData() 
   png("plot3.png", width=480, height=480, bg="transparent")
   plot(dat$Time, ylim=c(min(c(dat$Sub_metering_1, dat$Sub_metering_2, dat$Sub_metering_3)),max(c(dat$Sub_metering_1,dat$Sub_metering_2,dat$Sub_metering_3))),dat$Sub_metering_1, xlab="", ylab="Energy sub metering", type='l')
   par(new=TRUE)
